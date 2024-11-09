@@ -1,0 +1,17 @@
+RawAssets：游戏初始资源文件，存放未处理过的素材，游戏使用资源不存放在此处
+
+Plugins：存放游戏插件
+
+Scripts：存放脚本相关资源
+
+AssetPackage：游戏资源的存放路径
+
+Editor：编辑器文件夹
+
+Scenes：场景文件夹
+
+StreamingAssets：AB包存放路径
+
+Gizmos：绘制相关资源
+
+Audio：音频资源
