@@ -24,7 +24,7 @@ namespace MY_Framework.FSM
         void OnEnter();
         void OnExit();
         void OnUpdate();
-        //void OnFixedUpdate();
+        void OnFixedUpdate();
     }
 
     //需要手动挂载
@@ -78,10 +78,10 @@ namespace MY_Framework.FSM
             CurrentState.OnUpdate();
         }
 
-        // public void OnFixedUpdate()
-        // {
-        //     CurrentState.OnFixedUpdate();
-        // }
+        public void OnFixedUpdate()
+        {
+            CurrentState.OnFixedUpdate();
+        }
 
     }
 
