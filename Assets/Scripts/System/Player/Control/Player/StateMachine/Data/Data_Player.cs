@@ -45,4 +45,10 @@ public class Data_Player : ScriptableObject
     [Header("爬梯子纵向速度")]
     public float LadderMoveSpeedY;
 
+    [Header("-Dash-")]
+    [Header("冲刺距离")]
+    public float DashDistance;
+    [Header("冲刺时间")]
+    public float DashTime;
+
 }

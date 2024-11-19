@@ -17,9 +17,11 @@ MonoBehaviour:
   StopTime: 0.25
   MaxJumpTimes: 0
   JumpUpMaxSpeed: 15
-  JumpToMinTime: 0.2
+  JumpToMinTime: 0
   JumpMoveSpeed: 8
   JumpDownGravityScale: 2
   JumpDownMaxSpeed: 15
   LadderMoveSpeedX: 5
   LadderMoveSpeedY: 5
+  DashDistance: 0
+  DashTime: 0

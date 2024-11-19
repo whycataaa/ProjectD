@@ -6,11 +6,11 @@ using MY_Framework.FSM;
 public class PlayerController : MonoBehaviour
 {
     PlayerInputHandler inputHandler;
-    CameraFollowObject cameraFollowObject;
     GroundDetect groundDetect;
     LadderDetect ladderDetect;
     GameObject playerGO;
     public Animator BodyAnimator;
+    public CameraFollowObject cameraFollowObject{get;private set;}
 
     #region Movement
     [DisplayOnly][SerializeField]
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     #region FSM
     private FSM fsm;
     public BlackBoard_Player blackBoard;
+
     #endregion
 
     Vector2 baseScale;
@@ -91,6 +92,9 @@ public class PlayerController : MonoBehaviour
         {
             SetFaceDir(MoveInputX);
         }
+    
+    
+    
     }
 
     private void SetInputValue()

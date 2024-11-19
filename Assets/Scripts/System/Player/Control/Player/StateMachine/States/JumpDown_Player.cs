@@ -9,7 +9,7 @@ public class JumpDown_Player : IState
 
     float elapsedTime;
     Vector2 currentVelocity;
-    float EnterVelocityY;
+    bool IsTag=true;
     public JumpDown_Player(FSM fsm)
     {
         this.fsm = fsm;
@@ -18,6 +18,8 @@ public class JumpDown_Player : IState
 
     public void OnEnter()
     {
+        //重置tag
+        IsTag=true;
 
         elapsedTime = 0;
         currentVelocity = board.PC.Rb.velocity;
@@ -26,6 +28,8 @@ public class JumpDown_Player : IState
 
     public void OnExit()
     {
+        //复原
+        board.PC.cameraFollowObject.Down(true);
         board.PC.Rb.gravityScale=1;
     }
 
@@ -44,8 +48,14 @@ public class JumpDown_Player : IState
         float targetSpeed=board.PC.MoveInputX*board.PC.Data_Player.JumpMoveSpeed;
         board.PC.Move(currentVelocity.x,targetSpeed,board.PC.Data_Player.ToMoveMaxSpeedTime,ref elapsedTime);
 
-        if(MathF.Abs(board.PC.Rb.velocity.y)>board.PC.Data_Player.JumpDownMaxSpeed)
+        if(MathF.Abs(board.PC.Rb.velocity.y)>=board.PC.Data_Player.JumpDownMaxSpeed)
         {
+            //告诉相机到最大下落速度
+            if(IsTag)
+            {
+                board.PC.cameraFollowObject.Down(false);
+                IsTag=false;
+            }
             board.PC.SetVelocityY(-board.PC.Data_Player.JumpDownMaxSpeed);
             Debug.Log(board.PC.Rb.velocity.y);
         }
