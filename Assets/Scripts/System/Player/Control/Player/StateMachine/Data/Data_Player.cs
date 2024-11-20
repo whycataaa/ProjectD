@@ -9,6 +9,9 @@ public class Data_Player : ScriptableObject
 {
     [Header("--Movement--")]
 
+    public float GobalGravityScale=1;
+
+
     [Header("-Run-")]
     [Header("移动的最大速度")]
     public float MoveMaxSpeed;

@@ -32,6 +32,10 @@ public class Move_Player : IState
 
     public void OnUpdate()
     {
+        if(board.PC.IsDash)
+        {
+            fsm.ChangeState(StateType.Action_Dash);
+        }
         if(!board.PC.IsGrounded)
         {
             fsm.ChangeState(StateType.Action_JumpDown);
@@ -51,6 +55,7 @@ public class Move_Player : IState
                 fsm.ChangeState(StateType.Action_Ladder);
             }
         }
+
     }
     public void OnFixedUpdate()
     {

@@ -12,7 +12,8 @@ namespace MY_Framework.FSM
         Action_Ladder,
         Action_Attack,
         Action_Die,
-
+        Action_Dash,
+        
         GameProcedure_Init,
         GameProcedure_Start,
 

@@ -24,34 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LMouse",
-                    "type": "Button",
-                    "id": "b0064b7c-eee4-45d8-bf7f-6dfd2fd711f5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HandMove",
-                    "type": "Value",
-                    "id": "2995c29c-f859-4fde-a597-99574ce23abe",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Walk",
-                    "type": "Button",
-                    "id": "6f32b38d-5005-4aa6-b81a-672f0eac0cde",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Roll",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "ccb04096-cc71-4432-8b1c-e7c0d719214d",
                     "expectedControlType": "Button",
@@ -266,45 +239,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e296e5ff-7b3a-4e1a-983a-211daaff7760",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "LMouse",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e3c69f50-9e22-4404-bd2f-dbfe74916a8f",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "HandMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6766212f-fe55-4bd3-a7a3-87992ce67d75",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "07a835ef-bdd6-4145-a66b-1b3781f5f290",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Roll",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

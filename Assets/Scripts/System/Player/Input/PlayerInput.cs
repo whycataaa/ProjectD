@@ -46,34 +46,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LMouse"",
-                    ""type"": ""Button"",
-                    ""id"": ""b0064b7c-eee4-45d8-bf7f-6dfd2fd711f5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""HandMove"",
-                    ""type"": ""Value"",
-                    ""id"": ""2995c29c-f859-4fde-a597-99574ce23abe"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Walk"",
-                    ""type"": ""Button"",
-                    ""id"": ""6f32b38d-5005-4aa6-b81a-672f0eac0cde"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Roll"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""ccb04096-cc71-4432-8b1c-e7c0d719214d"",
                     ""expectedControlType"": ""Button"",
@@ -288,45 +261,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e296e5ff-7b3a-4e1a-983a-211daaff7760"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""LMouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e3c69f50-9e22-4404-bd2f-dbfe74916a8f"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""HandMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6766212f-fe55-4bd3-a7a3-87992ce67d75"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Walk"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""07a835ef-bdd6-4145-a66b-1b3781f5f290"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PC"",
-                    ""action"": ""Roll"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -453,10 +393,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
-        m_GamePlay_LMouse = m_GamePlay.FindAction("LMouse", throwIfNotFound: true);
-        m_GamePlay_HandMove = m_GamePlay.FindAction("HandMove", throwIfNotFound: true);
-        m_GamePlay_Walk = m_GamePlay.FindAction("Walk", throwIfNotFound: true);
-        m_GamePlay_Roll = m_GamePlay.FindAction("Roll", throwIfNotFound: true);
+        m_GamePlay_Dash = m_GamePlay.FindAction("Dash", throwIfNotFound: true);
         m_GamePlay_Lock = m_GamePlay.FindAction("Lock", throwIfNotFound: true);
         m_GamePlay_Bag = m_GamePlay.FindAction("Bag", throwIfNotFound: true);
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
@@ -527,10 +464,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
     private readonly InputAction m_GamePlay_Move;
     private readonly InputAction m_GamePlay_Jump;
-    private readonly InputAction m_GamePlay_LMouse;
-    private readonly InputAction m_GamePlay_HandMove;
-    private readonly InputAction m_GamePlay_Walk;
-    private readonly InputAction m_GamePlay_Roll;
+    private readonly InputAction m_GamePlay_Dash;
     private readonly InputAction m_GamePlay_Lock;
     private readonly InputAction m_GamePlay_Bag;
     private readonly InputAction m_GamePlay_Interact;
@@ -540,10 +474,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public GamePlayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_GamePlay_Move;
         public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
-        public InputAction @LMouse => m_Wrapper.m_GamePlay_LMouse;
-        public InputAction @HandMove => m_Wrapper.m_GamePlay_HandMove;
-        public InputAction @Walk => m_Wrapper.m_GamePlay_Walk;
-        public InputAction @Roll => m_Wrapper.m_GamePlay_Roll;
+        public InputAction @Dash => m_Wrapper.m_GamePlay_Dash;
         public InputAction @Lock => m_Wrapper.m_GamePlay_Lock;
         public InputAction @Bag => m_Wrapper.m_GamePlay_Bag;
         public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
@@ -562,18 +493,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @LMouse.started += instance.OnLMouse;
-            @LMouse.performed += instance.OnLMouse;
-            @LMouse.canceled += instance.OnLMouse;
-            @HandMove.started += instance.OnHandMove;
-            @HandMove.performed += instance.OnHandMove;
-            @HandMove.canceled += instance.OnHandMove;
-            @Walk.started += instance.OnWalk;
-            @Walk.performed += instance.OnWalk;
-            @Walk.canceled += instance.OnWalk;
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
             @Lock.started += instance.OnLock;
             @Lock.performed += instance.OnLock;
             @Lock.canceled += instance.OnLock;
@@ -593,18 +515,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @LMouse.started -= instance.OnLMouse;
-            @LMouse.performed -= instance.OnLMouse;
-            @LMouse.canceled -= instance.OnLMouse;
-            @HandMove.started -= instance.OnHandMove;
-            @HandMove.performed -= instance.OnHandMove;
-            @HandMove.canceled -= instance.OnHandMove;
-            @Walk.started -= instance.OnWalk;
-            @Walk.performed -= instance.OnWalk;
-            @Walk.canceled -= instance.OnWalk;
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
             @Lock.started -= instance.OnLock;
             @Lock.performed -= instance.OnLock;
             @Lock.canceled -= instance.OnLock;
@@ -707,10 +620,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnLMouse(InputAction.CallbackContext context);
-        void OnHandMove(InputAction.CallbackContext context);
-        void OnWalk(InputAction.CallbackContext context);
-        void OnRoll(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
         void OnLock(InputAction.CallbackContext context);
         void OnBag(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);

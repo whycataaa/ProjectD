@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public bool IsPressingJump{get;private set;}
     public int JumpTimes=0;
 
+
+    public bool IsDash{get;private set;}=false;
+
     public bool IsGrounded
     {
         get
@@ -77,6 +80,8 @@ public class PlayerController : MonoBehaviour
         fsm.AddState(StateType.Action_JumpUp, new JumpUp_Player(fsm));
         fsm.AddState(StateType.Action_JumpDown, new JumpDown_Player(fsm));
         fsm.AddState(StateType.Action_Ladder, new Ladder_Player(fsm));
+        fsm.AddState(StateType.Action_Dash, new Dash_Player(fsm));
+
         fsm.ChangeState(StateType.Action_Idle);
     }
 
@@ -103,6 +108,7 @@ public class PlayerController : MonoBehaviour
         MoveInputX = moveInputDir.x;
         MoveInputY = moveInputDir.y;
         IsJump = inputHandler.IsJump;
+        IsDash = inputHandler.IsDash;
         IsPressingJump = inputHandler.IsPressingJump;
     }
 

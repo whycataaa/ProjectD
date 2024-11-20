@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     #region 移动
     public Vector2 MovementValue{get;private set;}=Vector2.zero;
     public bool IsJump=>inputActions.GamePlay.Jump.WasPressedThisFrame();
+    public bool IsDash=>inputActions.GamePlay.Dash.WasPressedThisFrame();
     public bool IsPressingJump=>inputActions.GamePlay.Jump.IsPressed();
     #endregion
 
@@ -29,9 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
-        inputActions.GamePlay.HandMove.started+=OnHandMoveStarted;
-        inputActions.GamePlay.HandMove.performed+=OnHandMovePerformed;
-        inputActions.GamePlay.HandMove.canceled+=OnHandMoveCanceled;
+
 
     }
 
@@ -58,21 +57,9 @@ public class PlayerInputHandler : MonoBehaviour
     }
     #endregion
 
-    #region Battle
-    private void OnHandMoveStarted(InputAction.CallbackContext context)
-    {
-        MouseMove=context.ReadValue<Vector2>();
-    }
-    private void OnHandMovePerformed(InputAction.CallbackContext context)
-    {
-        MouseMove=context.ReadValue<Vector2>();
-    }
-    private void OnHandMoveCanceled(InputAction.CallbackContext context)
-    {
-        MouseMove=context.ReadValue<Vector2>();
-    }
 
-    #endregion
+
+
 
 
 }
